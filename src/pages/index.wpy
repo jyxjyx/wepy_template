@@ -1,0 +1,117 @@
+<style lang="less">
+
+</style>
+<template>
+    <view class="container">
+        hello world!
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    // import {
+    //     connect
+    // } from 'wepy-redux'
+
+    // @connect({
+    //     num(state) {
+    //         return state.counter.num
+    //     },
+    //     asyncNum(state) {
+    //         return state.counter.asyncNum
+    //     },
+    //     sumNum(state) {
+    //         return state.counter.num + state.counter.asyncNum
+    //     }
+    // })
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: 'test'
+        }
+        components = {}
+
+        mixins = []
+
+        data = {
+            userInfo: {
+                nickName: '加载中...'
+            },
+        }
+
+        computed = {
+            // now () {
+            //   return +new Date()
+            // }
+        }
+
+        methods = {
+            // plus () {
+            //   this.mynum++
+            // },
+            // request () {
+            //   let self = this
+            //   let i = 10
+            //   let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ==']
+            //   while (i--) {
+            //     wepy.request({
+            //       url: 'https://www.madcoder.cn/tests/sleep.php?time=1&t=css&c=' + map[i] + '&i=' + i,
+            //       success: function (d) {
+            //         self.netrst += d.data + '.'
+            //         self.$apply()
+            //       }
+            //     })
+            //   }
+            // }
+        }
+
+        events = {
+            // 'index-emit': (...args) => {
+            //   let $event = args[args.length - 1]
+            //   console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
+            // }
+        }
+
+        onLoad() {
+            this.$http.apiTest({
+                first_name: 'first',
+                last_name: 'last'
+            }).then(res => {
+                console.log('res:' ,res)
+            }).catch(err => {
+                console.log('err', err)
+            });
+            // this.$parent.getUserInfo(info => {
+            //     console.log(info)
+            // });
+            console.log(this.$parent.globalData.userInfo)
+            // this.$parent.httpRequest({
+            //   first_name: 'first',
+            //   last_name: 'last'
+            // }).then(res => {
+            //     console.log('res:' ,res)
+            // }).catch(err => {
+            //     console.log('err', err)
+            // })
+            // wepy.navigateTo({
+            //   url: '/pages/example'
+            // })
+            // let self = this
+            // this.$parent.getUserInfo(function (userInfo) {
+            //   if (userInfo) {
+            //     self.userInfo = userInfo
+            //   }
+            //   self.normalTitle = '标题已被修改'
+
+            //   self.setTimeoutTitle = '标题三秒后会被修改'
+            //   setTimeout(() => {
+            //     self.setTimeoutTitle = '到三秒了'
+            //     self.$apply()
+            //   }, 3000)
+
+            //   self.$apply()
+            // })
+        }
+    }
+
+</script>
